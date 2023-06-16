@@ -1,0 +1,19 @@
+[Unit]
+Description=Hellobye_listener
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/prometheus/
+ExecStart=/usr/bin/python3 /opt/prometheus/hellobye_listener.py
+
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=65536
+
+# Disable timeout logic and wait until process is stopped
+TimeoutStopSec=0
+
+[Install]
+WantedBy=multi-user.target
